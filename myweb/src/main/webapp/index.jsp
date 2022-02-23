@@ -26,6 +26,7 @@
 			<li><a href="formTest.jsp">폼테스트</a></li>
 			<li><a href="cal.jsp">계산기</a></li>
 			<li><a href="emp.jsp">사원관리 프로그램(기본개발패턴)</a></li>
+			<li><a href="emp2.jsp">사원관리프로그램(Beans적용)</a></li>
 		</ul>
 	</article>
 </section>
