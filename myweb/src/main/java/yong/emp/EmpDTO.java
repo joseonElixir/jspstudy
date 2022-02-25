@@ -11,6 +11,15 @@ public class EmpDTO {
 		// TODO Auto-generated constructor stub
 		System.out.println("EmpDTO 생성자 호출.");
 	}
+
+	public EmpDTO(int idx, String name, String email, String dept) {
+		super();
+		this.idx = idx;
+		this.name = name;
+		this.email = email;
+		this.dept = dept;
+	}
+	//DTO를 만들떄 기본생성자, 모든 인자생성자, getter setter 생성
 	
 	public int getIdx() {
 		return idx;

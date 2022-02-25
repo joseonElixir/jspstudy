@@ -17,7 +17,7 @@
 
 <section>
 	<article id="mainImg">
-		<img src="img/main.jpg" alt="털바퀴 좆냥이 떼껄룩쉑">
+		<img src="img/main.jpg" alt="털바퀴">
 	</article>
 	<article id="mainMenu">
 		<h2>아래에 메뉴가 추가됨.</h2>

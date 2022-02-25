@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>emp2_jsp</title>
 <link rel="stylesheet" type="text/css" href="css/mainLayout.css">
 <style>
 h2{
@@ -50,10 +50,55 @@ fieldset table{
 							<input type="reset" value="리셋">							
 				</table>
 			</fieldset>
-			
 			</form>
-
-
+	</article>
+	<article>
+		<form name="empDel2" action="empDel2_ok.jsp">
+		<fieldset>
+		<legend>퇴사처리</legend>
+		<table>
+			<tr>
+				<th>사원명 : </th>
+				<td><input type="text" name="name"></td>
+				<td><input type="submit" value="확인"></td>
+			</tr>
+		</table>
+		</fieldset>
+		</form>
+	</article>
+	<article>
+		<form name="empSearch2" action="empSearch2.jsp">
+		<fieldset>
+		<legend>사원검색</legend>
+		<table>
+			<tr>
+				<th>사원명 : </th>
+				<td><input type="text" name="name"></td>
+				<td><input type="submit" value="확인"></td>
+			</tr>
+		</table>
+		</fieldset>
+		</form>
+	</article>
+	<article>
+		<form action="empUpdate2.jsp">
+		<fieldset>
+		<legend>사원정보수정</legend>
+		<table>
+			<tr>
+				<th>사원번호 : </th>
+				<td><input type="text" name="idx"></td>
+				<td><input type="submit" value="확인"></td>
+			</tr>
+		</table>
+		</fieldset>
+		</form>
+	</article>
+	<article>
+		<fieldset>
+			<legend>모든사원내역</legend>
+			<h3><a href="empList2.jsp">모든 사원 내역</a></h3>
+		</fieldset>
 	</article>
 </section>
 <%@include file="footer.jsp" %>
