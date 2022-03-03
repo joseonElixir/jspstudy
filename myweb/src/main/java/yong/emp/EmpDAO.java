@@ -2,6 +2,10 @@ package yong.emp;
 
 import java.sql.*;
 import java.util.*;
+import javax.naming.*;
+import javax.sql.*;
+
+import yong.db.YongDB;
 
 public class EmpDAO {
 
@@ -13,19 +17,7 @@ public class EmpDAO {
 		System.out.println("EmpDAO생성자 호출.");
 		
 	}
-	/** DB연동 관련 메서드 */
-	public void dbConnect() {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url="jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "scott";
-			String pwd = "1234";
-			conn=DriverManager.getConnection(url, user, pwd);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
+	
 	
 	
 	
@@ -33,7 +25,7 @@ public class EmpDAO {
 	public int empAdd(EmpDTO dto) {
 		
 		try {
-			dbConnect();
+			
 			String sql="insert into employee values(employee_idx.nextval,?,?,?)";
 			ps = conn.prepareStatement(sql); 
 			ps.setString(1, dto.getName());
@@ -58,7 +50,7 @@ public class EmpDAO {
 		
 		try {
 			
-			dbConnect();
+			
 			String sql = "delete from employee where name=?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, dto.getName());
@@ -82,7 +74,8 @@ public class EmpDAO {
 	/**모든 사원 내역 보기*/
 	public EmpDTO[] empList() {
 		try {
-			dbConnect();
+			conn = YongDB.getConn();
+			
 			String sql ="select * from employee order by idx desc";
 			ps=conn.prepareStatement(sql);
 			rs=ps.executeQuery();
@@ -118,7 +111,8 @@ public class EmpDAO {
 	
 	public EmpDTO[] empGetInfo(EmpDTO dto) {
 		try {
-			dbConnect();
+		
+			
 			String sql ="select * from employee where idx=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, dto.getIdx());
@@ -156,7 +150,8 @@ public class EmpDAO {
 	
 	public EmpDTO[] empSearch(EmpDTO dto) {
 		try {
-			dbConnect();
+		
+			
 			String sql= "select * from employee where name=?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, dto.getName());
@@ -197,21 +192,22 @@ public class EmpDAO {
 	
 	public int empUpdate(EmpDTO dto) {
 		try {
-		dbConnect();
-		String sql = "update employee set name=?,email=?,dept=? where idx=?";
-		ps=conn.prepareStatement(sql);
-		ps.setString(1, dto.getName());
-		ps.setString(2, dto.getEmail());
-		ps.setString(3, dto.getDept());
-		ps.setInt(4, dto.getIdx());
-		
-		int count = ps.executeUpdate();
-		
-		if(count>0) {
-			return count;						
-		}else {
-			return -1;
-		}
+			
+			
+			String sql = "update employee set name=?,email=?,dept=? where idx=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, dto.getName());
+			ps.setString(2, dto.getEmail());
+			ps.setString(3, dto.getDept());
+			ps.setInt(4, dto.getIdx());
+			
+			int count = ps.executeUpdate();
+			
+			if(count>0) {
+				return count;						
+			}else {
+				return -1;
+			}
 		
 		} catch (Exception e) {
 			e.printStackTrace();

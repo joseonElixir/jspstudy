@@ -11,15 +11,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/mainLayout.css" >
 </head>
 <body>
 <section>
+<%
+String idx_s = request.getParameter("idx");
+int idx=0;
 
+if(idx_s==null||idx_s.equals("")){
+	idx=Integer.parseInt(idx_s);
+}else{
+	%>
+	<script>
+	window.alert('존재하지 않는 사원입니다');
+	 window.location.href='emp.jsp';
+	</script>
+	<%
+}
+
+
+%>
 <%@ include file="header.jsp" %>
 
 <form action="empUpdate_ok.jsp">
 	<fieldset>
-	<input type="hidden" name="idx" value="">
+	<input type="hidden" name="idx" value="<%=idx %>">
 		<table>
 			<tr>
 				<th>이름</th>

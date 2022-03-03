@@ -38,7 +38,7 @@ function openIdCheck(){
 <section>
 	<article>
 	<h2>회원가입</h2>
-	<form name="join" action="memberJoin_ok.jsp">
+	<form name="join" action="memberJoin_ok.jsp" method="post">
 		<fieldset>
 			<legend>회원가입</legend>
 			<ul>

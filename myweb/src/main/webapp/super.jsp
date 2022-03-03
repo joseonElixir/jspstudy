@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+String str = "JAVA";
+%>
+<h1 style="color:blue">파일 1</h1>
+<h1 style="color:blue">파일 2</h1>
+<jsp:include page="sub.jsp"></jsp:include>
+<h1 style="color:blue">super의 str :<%=str %></h1>
+</body>
+</html>
