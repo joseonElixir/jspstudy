@@ -14,18 +14,24 @@
 	<!-- 스타일시트 파일 불러오기(연결하기). -->
 	<%
 		boolean popkey= true;
-		Cookie cks1[] = request.getCookies();
-		for(int i=0;i<cks1.length;i++){
-			if(cks1[i].getName().equals("pop")){
- 					popkey= false;
+		Cookie ckpop[] = request.getCookies();
+		
+		if(ckpop!=null){
+			System.out.println("ckpop의 크기 : "+ckpop.length);
+			for(int i=0;i<ckpop.length;i++){
+				if(ckpop[i].getName().equals("pop")){
+					ckpop[i].getValue();
+	 					popkey= false;
+				}
 			}
-		}
-		if(popkey){	
-				%>
-				<script>
-					window.open('pop1.jsp','pop1','width=400,height=300, top=150,left=300');
-				</script>
-				<%
+			if(popkey){	
+					System.out.println("ckpop의 크기 : "+ckpop.length);
+					%>
+					<script>
+						window.open('pop1.jsp','pop1','width=400,height=300, top=150,left=300');
+					</script>
+					<%
+			}
 		}
 	%>
 </head>
@@ -84,6 +90,8 @@
 			<li><a href="emp.jsp">사원관리 프로그램(기본개발패턴)</a></li>
 			<li><a href="emp2.jsp">사원관리프로그램(Beans적용)</a></li>
 			<li><a href="member/memberFind.jsp">회원검색</a></li>
+			<li><a href="refroom.jsp">자료실</a></li>
+			<li><a href="wf/webFolder.jsp">Y드라이브</a></li>
 		</ul>
 	</article>
 </section>

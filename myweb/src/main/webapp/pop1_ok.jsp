@@ -11,9 +11,9 @@ System.out.println("st1 : "+st1);
 	
 	System.out.println("결과 : "+res);
 if(st1!=null){
-	Cookie ck1 = new Cookie("pop","up");
-	ck1.setMaxAge((int)res/1000);
-	response.addCookie(ck1);
+	Cookie popck = new Cookie("pop","up");
+	popck.setMaxAge((int)res/1000);
+	response.addCookie(popck);
 	System.out.println("입력 확인");
 }else{
 	System.out.println("불발");

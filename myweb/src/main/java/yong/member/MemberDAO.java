@@ -9,6 +9,10 @@ public class MemberDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	public static final int LOGIN_OK =1;
+	public static final int LOGIN_FAIL =0;
+	public static final int ERROR =-1;
+	
 	public MemberDAO() {
 		
 	}
@@ -116,4 +120,60 @@ public class MemberDAO {
 			}
 		}
 	}
+	/**로그인 판별 메소드*/
+	public int loginCheck(String id, String pwd) {
+		try {
+			conn=yong.db.YongDB.getConn();
+			String sql = "select name from jsp_member where id=? and pwd=?";
+			ps= conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, pwd);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return LOGIN_OK;
+			}else {
+				return LOGIN_FAIL;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(ps!=null)conn.close();
+			} catch (Exception e2) {
+			}
+		}
+	}//
+	/**사용자 정보 추출관련 메소드*/
+	public String UserInfo(String id) {
+		try {
+			conn=yong.db.YongDB.getConn();
+			String sql = "select name from jsp_member where id=?";
+			ps= conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				String name = rs.getString("name");
+				return name;
+			}else {
+				return null;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(ps!=null)conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		
+	}
+	
 }
